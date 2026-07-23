@@ -5,7 +5,6 @@ on:
   schedule: [{ cron: "31 4 * * 1" }]
 permissions:
   contents: read
-  security-events: write
 jobs:
   scan:
     runs-on: ubuntu-latest
@@ -18,5 +17,13 @@ jobs:
         with: { python-version: "3.12" }
       - run: python scripts/secret_scan.py
       - run: npm audit --audit-level=high
-      - uses: gitleaks/gitleaks-action@v2
-        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+      - name: Scan complete Git history with Gitleaks 8.24.3
+        run: |
+          archive=gitleaks_8.24.3_linux_x64.tar.gz
+          curl --fail --silent --show-error --location --remote-name \
+            "https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/${archive}"
+          curl --fail --silent --show-error --location --remote-name \
+            "https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_checksums.txt"
+          grep " ${archive}$" gitleaks_8.24.3_checksums.txt | sha256sum --check
+          tar -xzf "${archive}" gitleaks
+          ./gitleaks detect --source . --redact --verbose
