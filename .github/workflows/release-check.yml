@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with: { node-version: "24.18.0", cache: npm }
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with: { python-version: "3.12" }
       - run: npm ci && npm run build && npm test && npm run test:integration
       - run: python scripts/verify_evaluations.py
