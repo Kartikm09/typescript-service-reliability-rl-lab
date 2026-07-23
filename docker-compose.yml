@@ -1,0 +1,10 @@
+services:
+  typescript-service:
+    build: .
+    ports: ["8084:8084"]
+    environment: { APP_PORT: "8084" }
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:8084/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 12

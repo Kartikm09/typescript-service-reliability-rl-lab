@@ -1,0 +1,14 @@
+{
+  "name": "@rl-lab/jobs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "dependencies": {
+    "@rl-lab/domain": "0.1.0",
+    "@rl-lab/persistence": "0.1.0",
+    "@rl-lab/observability": "0.1.0"
+  }
+}

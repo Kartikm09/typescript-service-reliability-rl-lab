@@ -1,0 +1,26 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/domain"
+    },
+    {
+      "path": "packages/persistence"
+    },
+    {
+      "path": "packages/observability"
+    },
+    {
+      "path": "packages/jobs"
+    },
+    {
+      "path": "packages/shared-testkit"
+    },
+    {
+      "path": "packages/api"
+    },
+    {
+      "path": "tests"
+    }
+  ]
+}
