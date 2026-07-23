@@ -1,0 +1,23 @@
+{
+  "awarded": {
+    "build": 15,
+    "determinism": 5,
+    "format": 5,
+    "held_out_tests": 30,
+    "lint": 5,
+    "public_tests": 25,
+    "regression_tests": 15
+  },
+  "functional_weight": 85,
+  "maximum": 100,
+  "score": 100,
+  "weights": {
+    "build": 15,
+    "determinism": 5,
+    "format": 5,
+    "held_out_tests": 30,
+    "lint": 5,
+    "public_tests": 25,
+    "regression_tests": 15
+  }
+}

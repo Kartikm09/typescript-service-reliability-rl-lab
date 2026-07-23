@@ -1,0 +1,7 @@
+[
+  {
+    "after_sha256": "a15b97e80daabe585994ef5d27716bb60aa6dad8d13787884328644a3391c75a",
+    "before_sha256": "9cdd2f7fc3448049b258338b1eb49dec129d25427934011ee5d4a6d5f874b6ff",
+    "path": "src/validator.ts"
+  }
+]

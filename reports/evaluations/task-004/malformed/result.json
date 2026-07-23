@@ -1,0 +1,27 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [],
+  "classification": "malformed_patch",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Patch has no valid diff headers",
+  "score": 0,
+  "score_breakdown": {},
+  "stages": [],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-004"
+}

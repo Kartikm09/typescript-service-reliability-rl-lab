@@ -1,0 +1,33 @@
+{
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 8,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 566,
+      "name": "lint",
+      "passed": false,
+      "return_code": 2,
+      "stderr": "",
+      "stdout": "src/validator.ts(3,524): error TS2322: Type 'unknown' is not assignable to type 'string'.\n",
+      "timed_out": false
+    }
+  ],
+  "task_id": "task-004"
+}

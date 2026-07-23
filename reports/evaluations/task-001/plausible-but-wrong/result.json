@@ -1,0 +1,118 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [
+    {
+      "after_sha256": "7183823d47f9d0f3249cac0122cd5eef7cb245d8a38816886954de482ef539b5",
+      "before_sha256": "804990d3bcf42a1174197072589e46074012056726356929cd5252056fd758b3",
+      "path": "src/content-service.ts"
+    }
+  ],
+  "classification": "incomplete_solution",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Required candidate documentation is missing",
+  "score": 25,
+  "score_breakdown": {
+    "awarded": {
+      "build": 15,
+      "determinism": 0,
+      "format": 5,
+      "held_out_tests": 0,
+      "lint": 5,
+      "public_tests": 0,
+      "regression_tests": 0
+    },
+    "functional_weight": 85,
+    "maximum": 100,
+    "missing_documentation": [
+      "CANDIDATE_NOTES.md"
+    ],
+    "score": 25,
+    "weights": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 8,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 580,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 717,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "public",
+        "<repo-root>"
+      ],
+      "duration_ms": 918,
+      "name": "public_tests",
+      "passed": false,
+      "return_code": 1,
+      "stderr": "",
+      "stdout": "\u2716 public: concurrent same-key calls share one effect (2.094542ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 0\n\u2139 fail 1\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 75.446209\n\n\u2716 failing tests:\n\ntest at dist/tests/public.test.js:4:1\n\u2716 public: concurrent same-key calls share one effect (2.094542ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  3 !== 1\n  \n      at TestContext.<anonymous> (file://<temporary-path>:4:399)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 3,\n    expected: 1,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-001"
+}

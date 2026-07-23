@@ -1,0 +1,31 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [
+    {
+      "path": "README.md"
+    }
+  ],
+  "classification": "prohibited_file_change",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Prohibited paths: README.md",
+  "score": 0,
+  "score_breakdown": {},
+  "stages": [],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-004"
+}

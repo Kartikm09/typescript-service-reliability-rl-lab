@@ -1,0 +1,7 @@
+[
+  {
+    "after_sha256": "4960d2c89392d65b4b3247f771105f92a074ba906c4b9d1caaeb8f5655bbc4e1",
+    "before_sha256": "3cb172708ebda11df8e39e58a3ce1d403772dfd064a2d22a1c537a5f1168cb0c",
+    "path": "src/delivery.ts"
+  }
+]

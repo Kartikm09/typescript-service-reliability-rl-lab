@@ -1,0 +1,26 @@
+{
+  "awarded": {
+    "build": 0,
+    "determinism": 0,
+    "format": 5,
+    "held_out_tests": 0,
+    "lint": 0,
+    "public_tests": 0,
+    "regression_tests": 0
+  },
+  "functional_weight": 85,
+  "maximum": 100,
+  "missing_documentation": [
+    "CANDIDATE_NOTES.md"
+  ],
+  "score": 5,
+  "weights": {
+    "build": 15,
+    "determinism": 5,
+    "format": 5,
+    "held_out_tests": 30,
+    "lint": 5,
+    "public_tests": 25,
+    "regression_tests": 15
+  }
+}

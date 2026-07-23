@@ -1,0 +1,22 @@
+[
+  {
+    "after_sha256": "8940b023d03822fb82b5c634c953668f763f7af0a6178d96434e4f7613982c98",
+    "before_sha256": null,
+    "path": "CANDIDATE_NOTES.md"
+  },
+  {
+    "after_sha256": "1b8eccf8ea50346f1830fd2cbc0904e35ae9524340858700dde6aed5437f5ddb",
+    "before_sha256": "3415aadd825a1fbcb9fb3f5876d45964bcc3f5b982dacfc4a9f2e37d95499b1e",
+    "path": "src/domain.ts"
+  },
+  {
+    "after_sha256": "f1af55747882e264cef9691af27fb12e03518df40d993c5c35f6beb77d4032ba",
+    "before_sha256": "50058e2dd943654e87f2793d9f2b047b4c2da774566acd326b23d44eeff9d856",
+    "path": "src/persistence.ts"
+  },
+  {
+    "after_sha256": "b389122dc0b7a7bf0802810bce428fd05bb78312c51a691f77af352b62ae439d",
+    "before_sha256": null,
+    "path": "src/ports.ts"
+  }
+]

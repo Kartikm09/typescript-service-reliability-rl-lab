@@ -1,0 +1,144 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [
+    {
+      "after_sha256": "038c9a778a76f1623ab812ba8966fa522011ed820edc4d21cd4210c518c70c02",
+      "before_sha256": "3415aadd825a1fbcb9fb3f5876d45964bcc3f5b982dacfc4a9f2e37d95499b1e",
+      "path": "src/domain.ts"
+    },
+    {
+      "after_sha256": "f1af55747882e264cef9691af27fb12e03518df40d993c5c35f6beb77d4032ba",
+      "before_sha256": "50058e2dd943654e87f2793d9f2b047b4c2da774566acd326b23d44eeff9d856",
+      "path": "src/persistence.ts"
+    },
+    {
+      "after_sha256": "b389122dc0b7a7bf0802810bce428fd05bb78312c51a691f77af352b62ae439d",
+      "before_sha256": null,
+      "path": "src/ports.ts"
+    }
+  ],
+  "classification": "incomplete_solution",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Required candidate documentation is missing",
+  "score": 50,
+  "score_breakdown": {
+    "awarded": {
+      "build": 15,
+      "determinism": 0,
+      "format": 5,
+      "held_out_tests": 0,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 0
+    },
+    "functional_weight": 85,
+    "maximum": 100,
+    "missing_documentation": [
+      "CANDIDATE_NOTES.md"
+    ],
+    "score": 50,
+    "weights": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 13,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 789,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 665,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "public",
+        "<repo-root>"
+      ],
+      "duration_ms": 863,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "\u2714 public: save/load behavior is preserved (0.987833ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 72.902625\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "held_out",
+        "<repo-root>"
+      ],
+      "duration_ms": 625,
+      "name": "held_out_tests",
+      "passed": false,
+      "return_code": 2,
+      "stderr": "",
+      "stdout": "tests/regression.test.ts(2,192): error TS2345: Argument of type 'ContentRepository' is not assignable to parameter of type 'MemoryRepository'.\n  Property '#items' is missing in type 'ContentRepository' but required in type 'MemoryRepository'.\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-003"
+}

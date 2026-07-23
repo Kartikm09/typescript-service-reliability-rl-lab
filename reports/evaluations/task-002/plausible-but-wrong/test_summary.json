@@ -1,0 +1,33 @@
+{
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 8,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 855,
+      "name": "lint",
+      "passed": false,
+      "return_code": 2,
+      "stderr": "",
+      "stdout": "tests/public.test.ts(1,99): error TS2305: Module '\"../src/delivery.js\"' has no exported member 'Clock'.\ntests/public.test.ts(1,110): error TS2305: Module '\"../src/delivery.js\"' has no exported member 'DeliveryEvent'.\ntests/public.test.ts(3,238): error TS2554: Expected 2 arguments, but got 5.\ntests/public.test.ts(3,261): error TS7006: Parameter 'event' implicitly has an 'any' type.\n",
+      "timed_out": false
+    }
+  ],
+  "task_id": "task-002"
+}
