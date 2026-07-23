@@ -1,0 +1,32 @@
+name: RL task proposal
+description: Propose a synthetic, reproducible engineering task
+title: "task: "
+labels: ["task-proposal"]
+body:
+  - type: textarea
+    id: engineering_problem
+    attributes:
+      label: Engineering problem and business context
+    validations:
+      required: true
+  - type: textarea
+    id: visibility
+    attributes:
+      label: Candidate-visible and held-out evidence boundary
+    validations:
+      required: true
+  - type: textarea
+    id: reward
+    attributes:
+      label: Deterministic reward and failure classifications
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: Uses synthetic code and fixtures only
+          required: true
+        - label: Does not include credentials or proprietary data
+          required: true

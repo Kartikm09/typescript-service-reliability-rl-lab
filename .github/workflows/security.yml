@@ -1,0 +1,22 @@
+name: Security
+on:
+  push:
+  pull_request:
+  schedule: [{ cron: "31 4 * * 1" }]
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: "24.18.0", cache: npm }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python scripts/secret_scan.py
+      - run: npm audit --audit-level=high
+      - uses: gitleaks/gitleaks-action@v2
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }

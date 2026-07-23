@@ -1,0 +1,32 @@
+name: Bug report
+description: Report a reproducible defect in the application or evaluator
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, private code, or confidential fixtures.
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction and commands
+    validations:
+      required: true
+  - type: input
+    id: toolchain
+    attributes:
+      label: Toolchain and operating system
+    validations:
+      required: true

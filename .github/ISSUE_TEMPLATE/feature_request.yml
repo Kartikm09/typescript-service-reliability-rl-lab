@@ -1,0 +1,21 @@
+name: Feature request
+description: Propose a scoped application, evaluator, or documentation improvement
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Compatibility, security, and determinism risks
