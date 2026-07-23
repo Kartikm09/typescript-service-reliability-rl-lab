@@ -1,0 +1,68 @@
+{
+  "acceptance_score": 80,
+  "allowed_paths": [
+    "src/**",
+    "CANDIDATE_NOTES.md"
+  ],
+  "build_failure_class": "compile_error",
+  "commands": {
+    "build": [
+      "bash",
+      "scripts/build.sh",
+      "{repo_root}/node_modules/.bin/tsc",
+      "{repo_root}"
+    ],
+    "determinism": [
+      "bash",
+      "scripts/determinism.sh"
+    ],
+    "format": [
+      "bash",
+      "scripts/format_check.sh"
+    ],
+    "held_out_tests": [
+      "bash",
+      "scripts/run_test.sh",
+      "{repo_root}/node_modules/.bin/tsc",
+      "held_out",
+      "{repo_root}"
+    ],
+    "lint": [
+      "bash",
+      "scripts/build.sh",
+      "{repo_root}/node_modules/.bin/tsc",
+      "{repo_root}"
+    ],
+    "public_tests": [
+      "bash",
+      "scripts/run_test.sh",
+      "{repo_root}/node_modules/.bin/tsc",
+      "public",
+      "{repo_root}"
+    ],
+    "regression_tests": [
+      "bash",
+      "scripts/run_test.sh",
+      "{repo_root}/node_modules/.bin/tsc",
+      "regression",
+      "{repo_root}"
+    ]
+  },
+  "language": "TypeScript",
+  "output_limit_bytes": 200000,
+  "performance": null,
+  "required_documentation": [
+    "CANDIDATE_NOTES.md"
+  ],
+  "task_id": "task-001",
+  "timeout_seconds": 90,
+  "weights": {
+    "build": 15,
+    "determinism": 5,
+    "format": 5,
+    "held_out_tests": 30,
+    "lint": 5,
+    "public_tests": 25,
+    "regression_tests": 15
+  }
+}

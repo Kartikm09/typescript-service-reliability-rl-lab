@@ -1,0 +1,10 @@
+id: task-004
+title: "Single-pass validation optimization"
+category: performance_optimization
+language: TypeScript
+deterministic_seed: 20260723
+candidate_workspace: baseline/workspace
+public_tests: public_tests
+held_out_tests: held_out_tests
+acceptance_score: 80
+synthetic: true

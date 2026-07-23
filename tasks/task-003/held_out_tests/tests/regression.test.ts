@@ -1,0 +1,2 @@
+import assert from "node:assert/strict";import test from "node:test";import type {ContentRepository} from "../src/ports.js";import {saveContent} from "../src/domain.js";
+test("regression: alternate ports remain valid",async()=>{let saved="";const repository:ContentRepository={save:async(content)=>{saved=content.id;},find:async()=>undefined};await saveContent(repository,{id:"x",body:"y"});assert.equal(saved,"x");});

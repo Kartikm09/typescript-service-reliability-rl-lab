@@ -1,0 +1,12 @@
+diff --git a/src/content-service.ts b/src/content-service.ts
+--- a/src/content-service.ts
++++ b/src/content-service.ts
+@@ -5,7 +5,7 @@
+     const completed = this.#completed.get(key);
+     if (completed !== undefined) return completed;
+     const result = await this.sideEffect(key);
+-    this.#completed.set(key, result);
++    this.#completed.set('global', result);
+     return result;
+   }
+ }

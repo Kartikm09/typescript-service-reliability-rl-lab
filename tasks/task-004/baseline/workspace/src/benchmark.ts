@@ -1,0 +1,1 @@
+import {validate} from "./validator.js";const payloads=Array.from({length:100},(_,index)=>JSON.stringify({id:String(index),title:"title",body:"synthetic"}));const result=validate(payloads);console.log(JSON.stringify({metric:"parse_passes",value:result.parsePasses}));

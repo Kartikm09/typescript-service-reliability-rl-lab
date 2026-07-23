@@ -1,0 +1,10 @@
+id: task-003
+title: "Layered module-boundary refactor"
+category: behavior_preserving_refactor
+language: TypeScript
+deterministic_seed: 20260723
+candidate_workspace: baseline/workspace
+public_tests: public_tests
+held_out_tests: held_out_tests
+acceptance_score: 80
+synthetic: true

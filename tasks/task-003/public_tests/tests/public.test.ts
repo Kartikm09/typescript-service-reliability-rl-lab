@@ -1,0 +1,2 @@
+import assert from "node:assert/strict";import test from "node:test";import {saveContent,type Content} from "../src/domain.js";import {MemoryRepository} from "../src/persistence.js";
+test("public: save/load behavior is preserved",async()=>{const repository=new MemoryRepository();const content:Content={id:"1",body:"demo"};await saveContent(repository,content);assert.deepEqual(await repository.find("1"),content);});
