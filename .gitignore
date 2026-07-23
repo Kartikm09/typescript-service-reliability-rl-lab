@@ -1,0 +1,11 @@
+.DS_Store
+.env
+node_modules/
+packages/*/dist/
+dist-tests/
+coverage/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.venv/
+reports/evaluations/*/manual/

@@ -1,0 +1,9 @@
+.git
+.github
+node_modules
+packages/*/dist
+dist-tests
+coverage
+reports/evaluations
+tasks
+evaluator
