@@ -74,3 +74,86 @@ void test("cancellation prevents pending delivery", async () => {
     ["delivery.scheduled", "delivery.cancelled"],
   );
 });
+
+void test("duplicate scheduling is rejected without losing the first handle", () => {
+  const clock = new DeterministicClock();
+  const service = new DeliveryService(
+    new MemoryContentRepository(),
+    { deliver: () => Promise.resolve() },
+    new MemoryLogger(),
+  );
+  service.schedule(job, 10, clock, { maxAttempts: 1 }, (event) => {
+    void event;
+  });
+  assert.throws(() => {
+    service.schedule(job, 20, clock, { maxAttempts: 1 }, (event) => {
+      void event;
+    });
+  }, /already scheduled/);
+  assert.equal(
+    service.cancel(job.id, (event) => {
+      void event;
+    }),
+    true,
+  );
+});
+
+void test("invalid retry budgets fail before a delivery is scheduled", () => {
+  for (const maxAttempts of [
+    0,
+    -1,
+    1.5,
+    Number.NaN,
+    Number.POSITIVE_INFINITY,
+  ]) {
+    const clock = new DeterministicClock();
+    const service = new DeliveryService(
+      new MemoryContentRepository(),
+      { deliver: () => Promise.resolve() },
+      new MemoryLogger(),
+    );
+    assert.throws(() => {
+      service.schedule(job, 10, clock, { maxAttempts }, (event) => {
+        void event;
+      });
+    }, /maxAttempts/);
+    assert.equal(
+      service.cancel(job.id, (event) => {
+        void event;
+      }),
+      false,
+    );
+  }
+});
+
+void test("retry exhaustion emits failure and never completion", async () => {
+  let calls = 0;
+  const clock = new DeterministicClock();
+  const events: DeliveryEvent[] = [];
+  const service = new DeliveryService(
+    new MemoryContentRepository(),
+    {
+      deliver: () => {
+        calls += 1;
+        return Promise.reject(new Error("offline"));
+      },
+    },
+    new MemoryLogger(),
+  );
+  service.schedule(job, 10, clock, { maxAttempts: 2 }, (event) => {
+    events.push(event);
+  });
+  clock.advanceTo(10);
+  await new Promise<void>((resolve) => setImmediate(resolve));
+  assert.equal(calls, 2);
+  assert.deepEqual(
+    events.map((event) => event.type),
+    ["delivery.scheduled", "delivery.failed"],
+  );
+  assert.equal(
+    service.cancel(job.id, (event) => {
+      void event;
+    }),
+    false,
+  );
+});

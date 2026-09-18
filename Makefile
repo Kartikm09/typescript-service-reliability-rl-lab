@@ -2,7 +2,7 @@ PYTHON ?= python3
 TASK ?= task-001
 PATCH ?= tasks/$(TASK)/golden/solution.patch
 REPORT ?= reports/evaluations/$(TASK)/manual
-.PHONY: setup format lint typecheck build test integration-test coverage benchmark evaluator-test evaluate verify-evaluations security-scan verify-all
+.PHONY: setup format lint typecheck build test integration-test coverage benchmark evaluator-test evaluate verify-evaluations security-scan verify-all http-smoke
 setup:
 	node --version
 	npm --version
@@ -19,6 +19,8 @@ test:
 	npm test
 integration-test:
 	npm run test:integration
+http-smoke:
+	npm run test:smoke
 coverage:
 	npm run coverage
 benchmark:

@@ -18,6 +18,7 @@ export interface RetryPolicy {
 
 export class DeliveryService {
   readonly #inFlight = new Map<string, Promise<string>>();
+  readonly #completed = new Map<string, string>();
   readonly #scheduled = new Map<string, { cancel(): void }>();
   constructor(
     private readonly repository: ContentRepository,
@@ -25,6 +26,8 @@ export class DeliveryService {
     private readonly logger: Logger,
   ) {}
   process(job: ContentJob): Promise<string> {
+    const completed = this.#completed.get(job.idempotencyKey);
+    if (completed !== undefined) return Promise.resolve(completed);
     const existing = this.#inFlight.get(job.idempotencyKey);
     if (existing !== undefined) return existing;
     const operation = this.execute(job).finally(() =>
@@ -40,12 +43,26 @@ export class DeliveryService {
     policy: RetryPolicy,
     onEvent: (event: DeliveryEvent) => void,
   ): void {
-    if (at < clock.now()) throw new RangeError("delivery time is in the past");
+    if (!Number.isFinite(at) || at < clock.now())
+      throw new RangeError("delivery time is invalid or in the past");
+    if (!Number.isSafeInteger(policy.maxAttempts) || policy.maxAttempts < 1)
+      throw new RangeError("maxAttempts must be a positive safe integer");
+    if (this.#scheduled.has(job.id))
+      throw new Error("job is already scheduled");
     const handle = clock.schedule(at, () => {
       this.#scheduled.delete(job.id);
-      void this.deliverWithRetry(job, policy).then((attempts) => {
-        onEvent({ type: "delivery.completed", jobId: job.id, attempts });
-      });
+      void this.deliverWithRetry(job, policy).then(
+        (attempts) => {
+          onEvent({ type: "delivery.completed", jobId: job.id, attempts });
+        },
+        () => {
+          onEvent({
+            type: "delivery.failed",
+            jobId: job.id,
+            attempts: policy.maxAttempts,
+          });
+        },
+      );
     });
     this.#scheduled.set(job.id, handle);
     onEvent({ type: "delivery.scheduled", jobId: job.id, at });
@@ -61,6 +78,7 @@ export class DeliveryService {
   private async execute(job: ContentJob): Promise<string> {
     await this.repository.save(job);
     await this.transport.deliver(job);
+    this.#completed.set(job.idempotencyKey, job.id);
     this.logger.write({
       event: "delivery.completed",
       fields: { jobId: job.id },

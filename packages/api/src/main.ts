@@ -9,6 +9,9 @@ const server = createServer((request, response) => {
   response.writeHead(404);
   response.end();
 });
-server.listen(port, "0.0.0.0", () => {
-  console.log(`TypeScript service listening on ${String(port)}`);
+server.listen(port, process.env["APP_HOST"] ?? "0.0.0.0", () => {
+  const address = server.address();
+  const actualPort =
+    typeof address === "object" && address !== null ? address.port : port;
+  console.log(`TypeScript service listening on ${String(actualPort)}`);
 });

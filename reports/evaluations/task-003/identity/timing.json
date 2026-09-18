@@ -1,0 +1,11 @@
+{
+  "stages": {
+    "build": 1353,
+    "format": 69,
+    "held_out_tests": 1292,
+    "lint": 1387,
+    "public_tests": 1167
+  },
+  "task_id": "task-003",
+  "total_duration_ms": 5268
+}

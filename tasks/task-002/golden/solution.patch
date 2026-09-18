@@ -9,13 +9,14 @@ new file mode 100644
 diff --git a/src/delivery.ts b/src/delivery.ts
 --- a/src/delivery.ts
 +++ b/src/delivery.ts
-@@ -1,3 +1,20 @@
+@@ -1,3 +1,23 @@
  export interface Message { readonly id: string; readonly body: string; }
  export interface Transport { deliver(message: Message): Promise<void>; }
 -export class DeliveryService { constructor(private readonly transport: Transport) {} async deliverNow(message: Message): Promise<void> { await this.transport.deliver(message); } }
 +export interface Clock { now(): number; schedule(at: number, callback: () => void): { cancel(): void }; }
 +export interface RetryPolicy { readonly maxAttempts: number; }
 +export type DeliveryEvent =
++  | { readonly type: "failed"; readonly messageId: string; readonly attempts: number }
 +  | { readonly type: "scheduled"; readonly messageId: string; readonly at: number }
 +  | { readonly type: "cancelled"; readonly messageId: string }
 +  | { readonly type: "completed"; readonly messageId: string; readonly attempts: number };
@@ -24,8 +25,10 @@ diff --git a/src/delivery.ts b/src/delivery.ts
 +  constructor(private readonly transport: Transport) {}
 +  async deliverNow(message: Message): Promise<void> { await this.transport.deliver(message); }
 +  schedule(message: Message, at: number, clock: Clock, policy: RetryPolicy, onEvent: (event: DeliveryEvent) => void): void {
-+    if (at < clock.now()) throw new RangeError("delivery time is in the past");
-+    const handle=clock.schedule(at,()=>{this.#pending.delete(message.id);void this.deliverWithRetry(message,policy).then((attempts)=>onEvent({type:"completed",messageId:message.id,attempts}));});
++    if (!Number.isFinite(at) || at < clock.now()) throw new RangeError("delivery time is invalid or in the past");
++    if (!Number.isSafeInteger(policy.maxAttempts) || policy.maxAttempts < 1) throw new RangeError("maxAttempts must be a positive safe integer");
++    if (this.#pending.has(message.id)) throw new Error("message is already scheduled");
++    const handle=clock.schedule(at,()=>{this.#pending.delete(message.id);void this.deliverWithRetry(message,policy).then((attempts)=>onEvent({type:"completed",messageId:message.id,attempts}),()=>onEvent({type:"failed",messageId:message.id,attempts:policy.maxAttempts}));});
 +    this.#pending.set(message.id,handle);onEvent({type:"scheduled",messageId:message.id,at});
 +  }
 +  cancel(messageId: string, onEvent: (event: DeliveryEvent) => void): boolean { const handle=this.#pending.get(messageId);if(handle===undefined)return false;handle.cancel();this.#pending.delete(messageId);onEvent({type:"cancelled",messageId});return true; }

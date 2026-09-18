@@ -1,6 +1,11 @@
 [
   {
-    "after_sha256": "a15b97e80daabe585994ef5d27716bb60aa6dad8d13787884328644a3391c75a",
+    "after_sha256": "246585c1603e8c77a0df419f61004617b78279f2a3481cc5d610bdb199c373b2",
+    "before_sha256": null,
+    "path": "CANDIDATE_NOTES.md"
+  },
+  {
+    "after_sha256": "9d844ab7243055a9b833d8e609fcf67a5ceee1ab435842dfb278b988eea13931",
     "before_sha256": "9cdd2f7fc3448049b258338b1eb49dec129d25427934011ee5d4a6d5f874b6ff",
     "path": "src/validator.ts"
   }

@@ -1,0 +1,33 @@
+diff --git a/CANDIDATE_NOTES.md b/CANDIDATE_NOTES.md
+new file mode 100644
+--- /dev/null
++++ b/CANDIDATE_NOTES.md
+@@ -0,0 +1,3 @@
++# Candidate Notes
++
++Stores one in-flight Promise per idempotency key, returns it to concurrent callers, and clears it in finally so failures can be retried without a global lock.
+diff --git a/src/content-service.ts b/src/content-service.ts
+--- a/src/content-service.ts
++++ b/src/content-service.ts
+@@ -1,11 +1,16 @@
+ export class ContentService {
+   readonly #completed = new Map<string, string>();
++  readonly #inFlight = new Map<string, Promise<string>>();
+   constructor(private readonly sideEffect: (key: string) => Promise<string>) {}
+-  async process(key: string): Promise<string> {
++  process(key: string): Promise<string> {
+     const completed = this.#completed.get(key);
+-    if (completed !== undefined) return completed;
+-    const result = await this.sideEffect(key);
+-    this.#completed.set(key, result);
+-    return result;
++    if (completed !== undefined) return Promise.resolve(completed);
++    const existing = this.#inFlight.get(key);
++    if (existing !== undefined) return existing;
++    const operation = this.sideEffect(key)
++      .then((result) => { this.#completed.set(key, result); return result; })
++      .finally(() => { /* rejected promise remains cached */ });
++    this.#inFlight.set(key, operation);
++    return operation;
+   }
+ }

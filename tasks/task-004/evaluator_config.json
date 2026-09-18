@@ -19,8 +19,9 @@
       "{repo_root}"
     ],
     "determinism": [
-      "bash",
-      "scripts/determinism.sh"
+      "node",
+      "{repo_root}/verifiers/determinism.mjs",
+      "task-004"
     ],
     "format": [
       "bash",

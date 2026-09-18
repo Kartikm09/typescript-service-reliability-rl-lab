@@ -1,0 +1,8 @@
+{
+  "stages": {
+    "format": 11,
+    "lint": 895
+  },
+  "task_id": "task-002",
+  "total_duration_ms": 906
+}

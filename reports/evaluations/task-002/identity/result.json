@@ -1,0 +1,84 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [
+    {
+      "after_sha256": "091cab228173d08931be1c9e7a6850aa217d2214fd7f164a91f7c7e14d57042d",
+      "before_sha256": null,
+      "path": "CANDIDATE_NOTES.md"
+    }
+  ],
+  "classification": "incomplete_solution",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Stage failed: lint",
+  "score": 5,
+  "score_breakdown": {
+    "awarded": {
+      "build": 0,
+      "determinism": 0,
+      "format": 5,
+      "held_out_tests": 0,
+      "lint": 0,
+      "public_tests": 0,
+      "regression_tests": 0
+    },
+    "functional_weight": 85,
+    "maximum": 100,
+    "score": 5,
+    "weights": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 11,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 895,
+      "name": "lint",
+      "passed": false,
+      "return_code": 2,
+      "stderr": "",
+      "stdout": "tests/public.test.ts(1,99): error TS2305: Module '\"../src/delivery.js\"' has no exported member 'Clock'.\ntests/public.test.ts(1,110): error TS2305: Module '\"../src/delivery.js\"' has no exported member 'DeliveryEvent'.\ntests/public.test.ts(3,204): error TS2339: Property 'schedule' does not exist on type 'DeliveryService'.\ntests/public.test.ts(3,261): error TS7006: Parameter 'event' implicitly has an 'any' type.\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-002"
+}

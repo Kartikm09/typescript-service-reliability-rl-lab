@@ -1,0 +1,133 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [
+    {
+      "after_sha256": "091cab228173d08931be1c9e7a6850aa217d2214fd7f164a91f7c7e14d57042d",
+      "before_sha256": null,
+      "path": "CANDIDATE_NOTES.md"
+    }
+  ],
+  "classification": "test_failure",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Stage failed: held_out_tests",
+  "score": 50,
+  "score_breakdown": {
+    "awarded": {
+      "benchmark": 0,
+      "build": 15,
+      "determinism": 0,
+      "format": 5,
+      "held_out_tests": 0,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 0
+    },
+    "functional_weight": 75,
+    "maximum": 100,
+    "score": 50,
+    "weights": {
+      "benchmark": 10,
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 20,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 14,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 985,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 1176,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "public",
+        "<repo-root>"
+      ],
+      "duration_ms": 1360,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "\u2714 public: outputs remain compatible (2.428959ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 132.694208\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "held_out",
+        "<repo-root>"
+      ],
+      "duration_ms": 1226,
+      "name": "held_out_tests",
+      "passed": false,
+      "return_code": 1,
+      "stderr": "",
+      "stdout": "\u2716 held-out: malformed JSON and work metric (2.727917ms)\n\u2716 held-out: actual parse operations match reported work (0.342917ms)\n\u2139 tests 2\n\u2139 suites 0\n\u2139 pass 0\n\u2139 fail 2\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 118.884375\n\n\u2716 failing tests:\n\ntest at dist/tests/held_out.test.js:4:1\n\u2716 held-out: malformed JSON and work metric (2.727917ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  4 !== 2\n  \n      at TestContext.<anonymous> (file://<candidate-workspace>/dist/tests/held_out.test.js:4:199)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.start (node:internal/test_runner/test:1191:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 4,\n    expected: 2,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n\ntest at dist/tests/held_out.test.js:5:1\n\u2716 held-out: actual parse operations match reported work (0.342917ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  4 !== 2\n  \n      at TestContext.<anonymous> (file://<candidate-workspace>/dist/tests/held_out.test.js:7:12)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 4,\n    expected: 2,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-004"
+}

@@ -6,6 +6,11 @@ export interface ContentJob {
 
 export type DeliveryEvent =
   | {
+      readonly type: "delivery.failed";
+      readonly jobId: string;
+      readonly attempts: number;
+    }
+  | {
       readonly type: "delivery.scheduled";
       readonly jobId: string;
       readonly at: number;

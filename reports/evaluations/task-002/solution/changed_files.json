@@ -5,7 +5,7 @@
     "path": "CANDIDATE_NOTES.md"
   },
   {
-    "after_sha256": "109b8936e0fb3e7d0d74af4f3016fb685c37f5007d253887354dd38913e7e080",
+    "after_sha256": "b377245c84e5173a0c028e34fef3a10cc4ff980cf03d8c2cf645e24be51b3c75",
     "before_sha256": "3cb172708ebda11df8e39e58a3ce1d403772dfd064a2d22a1c537a5f1168cb0c",
     "path": "src/delivery.ts"
   }

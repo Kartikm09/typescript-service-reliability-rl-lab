@@ -80,7 +80,8 @@ npm audit --audit-level=high
 Strict options include `noImplicitAny`, `exactOptionalPropertyTypes`,
 `noUncheckedIndexedAccess`, and `noFallthroughCasesInSwitch`.
 
-See the measured [benchmark evidence](reports/benchmark-evidence.md) and final
+See the [benchmark evidence](reports/benchmark-evidence.md), current
+[verification record](reports/verified-refresh.md), and historical
 [Docker verification](reports/docker-verification.md).
 
 ## Skills demonstrated
@@ -109,3 +110,22 @@ an externally isolated, credential-free environment.
 Persistence, transports, and logs are local abstractions; no production database or
 external notification provider is claimed. Deterministic work metrics stabilize task
 scoring, while wall-clock Node benchmarks remain machine-dependent.
+
+## Verified reliability refresh
+
+The [RFC](docs/reliability-rfc.md), [defect report](docs/defect-report.md),
+[internal review](docs/verified-review.md) and [test strategy](docs/test-strategy.md) explain
+completed-key deduplication, explicit scheduling outcomes and meaningful negative controls.
+Each task records its fixed starting commit and baseline hashes. `make verify-all` checks
+four references, four starting states, eight behavioral negatives and eight syntax/scope controls.
+Run `python3 scripts/measure_validation.py` for an independent parse-count/timing comparison.
+
+Completed-key caching is process-local and unbounded in this compact demo. Persistence,
+expiry and multi-process exactly-once effects are not implemented. The evaluator executes
+trusted synthetic patches; all public fixtures/verifiers are inspectable and share the runner's
+OS environment. External isolation is required for unknown code.
+
+`make http-smoke` verifies the compiled server over localhost (health 200 and missing route
+404). `npm run test:integration` remains an in-process API contract test; no delivery HTTP
+endpoint is claimed. A logger failure is surfaced to its first caller, while known transport
+success is cached so a subsequent processing attempt does not deliver again.
