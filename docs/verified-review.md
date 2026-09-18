@@ -35,3 +35,8 @@ reported zero vulnerabilities; this is a point-in-time dependency check.
 Review limits: OS-level hostile-code isolation, durable storage, idempotency expiry and
 throwing event listeners remain outside this small demonstration. No external reviewer
 acceptance or production operation is claimed.
+
+The first GitHub history scan flagged two provenance SHA256 values as generic API keys.
+Both values were recomputed from their public source files and matched. `.gitleaksignore`
+records only those exact commit/file/rule/line fingerprints; complete-history scanning stays
+enabled without a rule-wide, path-wide or arbitrary-hash exclusion.

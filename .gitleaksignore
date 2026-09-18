@@ -1,0 +1,5 @@
+# Exact false positives: these report values are SHA256 hashes of public source files.
+# Verified against scripts/secret_scan.py and tests/integration/api.test.ts respectively.
+# The full-history scan remains enabled; no rule, path or generic hash pattern is excluded.
+f1898166f0e17c3ce945a6b84ef69a84a71b38c0:reports/verified-refresh.json:generic-api-key:72
+f1898166f0e17c3ce945a6b84ef69a84a71b38c0:reports/verified-refresh.json:generic-api-key:142
