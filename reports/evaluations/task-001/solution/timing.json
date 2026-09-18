@@ -1,13 +1,13 @@
 {
   "stages": {
-    "build": 613,
-    "determinism": 5,
-    "format": 14,
-    "held_out_tests": 780,
-    "lint": 1014,
-    "public_tests": 791,
-    "regression_tests": 844
+    "build": 1172,
+    "determinism": 86,
+    "format": 41,
+    "held_out_tests": 1368,
+    "lint": 1554,
+    "public_tests": 1306,
+    "regression_tests": 1376
   },
   "task_id": "task-001",
-  "total_duration_ms": 4061
+  "total_duration_ms": 6903
 }

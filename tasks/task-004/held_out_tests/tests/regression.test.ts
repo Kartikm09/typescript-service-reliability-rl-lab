@@ -1,2 +1,3 @@
 import assert from "node:assert/strict";import test from "node:test";import {validate} from "../src/validator.js";
 test("regression: error ordering",()=>assert.deepEqual(validate([JSON.stringify({id:1,title:2,body:3})]).errors,["id"]));
+test("regression: all original JSON value semantics remain",()=>{assert.deepEqual(validate(["null","[]","42",'"x"',JSON.stringify({id:"",title:"",body:""}),JSON.stringify({id:"x",title:2,body:3}),JSON.stringify({id:"x",title:"t",body:3})]).errors,["json","id","id","id","title","body"]);assert.deepEqual(validate([JSON.stringify({id:"",title:"",body:""})]).values,[{id:"",title:"",body:""}]);});

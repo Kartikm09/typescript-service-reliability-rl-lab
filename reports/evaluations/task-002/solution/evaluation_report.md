@@ -10,13 +10,13 @@
 
 | Stage | Result | Duration |
 | --- | --- | ---: |
-| `format` | pass | 8 ms |
-| `lint` | pass | 753 ms |
-| `build` | pass | 741 ms |
-| `public_tests` | pass | 906 ms |
-| `held_out_tests` | pass | 988 ms |
-| `regression_tests` | pass | 1255 ms |
-| `determinism` | pass | 7 ms |
+| `format` | pass | 14 ms |
+| `lint` | pass | 1097 ms |
+| `build` | pass | 1653 ms |
+| `public_tests` | pass | 1442 ms |
+| `held_out_tests` | pass | 1663 ms |
+| `regression_tests` | pass | 1109 ms |
+| `determinism` | pass | 84 ms |
 
 ## Changed files
 

@@ -1,8 +1,10 @@
 {
   "stages": {
-    "format": 8,
-    "lint": 566
+    "build": 1170,
+    "format": 18,
+    "lint": 1193,
+    "public_tests": 1215
   },
   "task_id": "task-004",
-  "total_duration_ms": 574
+  "total_duration_ms": 3596
 }

@@ -1,23 +1,24 @@
 # Evaluation Report: task-003
 
-- Classification: **incomplete_solution**
+- Classification: **test_failure**
 - Accepted: **false**
 - Score: **50/100**
 - Acceptance threshold: **80**
-- Message: Required candidate documentation is missing
+- Message: Stage failed: held_out_tests
 
 ## Stage evidence
 
 | Stage | Result | Duration |
 | --- | --- | ---: |
-| `format` | pass | 13 ms |
-| `lint` | pass | 789 ms |
-| `build` | pass | 665 ms |
-| `public_tests` | pass | 863 ms |
-| `held_out_tests` | fail | 625 ms |
+| `format` | pass | 9 ms |
+| `lint` | pass | 635 ms |
+| `build` | pass | 825 ms |
+| `public_tests` | pass | 1028 ms |
+| `held_out_tests` | fail | 1091 ms |
 
 ## Changed files
 
+- `CANDIDATE_NOTES.md`
 - `src/domain.ts`
 - `src/persistence.ts`
 - `src/ports.ts`

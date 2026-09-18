@@ -1,22 +1,23 @@
 # Evaluation Report: task-001
 
-- Classification: **incomplete_solution**
+- Classification: **test_failure**
 - Accepted: **false**
 - Score: **25/100**
 - Acceptance threshold: **80**
-- Message: Required candidate documentation is missing
+- Message: Stage failed: public_tests
 
 ## Stage evidence
 
 | Stage | Result | Duration |
 | --- | --- | ---: |
-| `format` | pass | 8 ms |
-| `lint` | pass | 580 ms |
-| `build` | pass | 717 ms |
-| `public_tests` | fail | 918 ms |
+| `format` | pass | 19 ms |
+| `lint` | pass | 1359 ms |
+| `build` | pass | 1321 ms |
+| `public_tests` | fail | 1637 ms |
 
 ## Changed files
 
+- `CANDIDATE_NOTES.md`
 - `src/content-service.ts`
 
 ## Safety boundary

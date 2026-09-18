@@ -1,0 +1,14 @@
+{
+  "starting_commit": "d0f1cea344df7858fb8393f9df6672dd7e98e4d5",
+  "files_sha256": {
+    "README.md": "c9d090d6acdccb2b681f5a7cc9c67eb8ed76fed6d3b402a5ac858a44f01f351b",
+    "package.json": "65e8effa6163be7aefbcddb7853a5a9c25a84fd764cf9fadb506ad6febd7aaa9",
+    "scripts/build.sh": "fc10a4c02a8290f8a0d769b7b67d94506781beafbe90d205a517305351cbb0f5",
+    "scripts/determinism.sh": "75794997fc186b27d8369159b0262c26a25f3ff7750064d6e585c44fef0220cb",
+    "scripts/format_check.sh": "7412de848aa29db15778a44672bc83ffb42194f2b355ed088c24d08fcb8828ef",
+    "scripts/run_test.sh": "dffa24c07430a24d51242894bee2cf26028add9abef7bb11b6fc98478d4e95d2",
+    "src/domain.ts": "3415aadd825a1fbcb9fb3f5876d45964bcc3f5b982dacfc4a9f2e37d95499b1e",
+    "src/persistence.ts": "50058e2dd943654e87f2793d9f2b047b4c2da774566acd326b23d44eeff9d856",
+    "tsconfig.json": "dd618921bad183c464663f11179c7bb6cda46ff0db7004d4e6a78f559498dbc0"
+  }
+}

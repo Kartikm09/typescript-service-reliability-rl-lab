@@ -21,7 +21,8 @@
     "test:integration": "node --test dist-tests/integration/*.test.js",
     "coverage": "c8 --check-coverage --lines 80 --functions 75 --branches 70 npm test",
     "benchmark": "node benchmarks/service-benchmark.mjs",
-    "start:api": "node packages/api/dist/main.js"
+    "start:api": "node packages/api/dist/main.js",
+    "test:smoke": "node scripts/smoke_http.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

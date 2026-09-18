@@ -14,6 +14,7 @@ void test("valid synthetic jobs preserve strings", () => {
         );
       },
     ),
+    { seed: 20260723 },
   );
 });
 void test("missing fields are rejected", () => {

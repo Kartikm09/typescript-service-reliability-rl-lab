@@ -8,3 +8,5 @@ public_tests: public_tests
 held_out_tests: held_out_tests
 acceptance_score: 80
 synthetic: true
+starting_commit: d0f1cea344df7858fb8393f9df6672dd7e98e4d5
+starting_fixture: tasks/task-001/baseline/workspace

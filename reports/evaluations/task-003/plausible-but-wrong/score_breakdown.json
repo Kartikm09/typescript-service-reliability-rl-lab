@@ -10,9 +10,6 @@
   },
   "functional_weight": 85,
   "maximum": 100,
-  "missing_documentation": [
-    "CANDIDATE_NOTES.md"
-  ],
   "score": 50,
   "weights": {
     "build": 15,

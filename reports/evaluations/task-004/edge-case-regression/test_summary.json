@@ -1,0 +1,96 @@
+{
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 15,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 1049,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 899,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "public",
+        "<repo-root>"
+      ],
+      "duration_ms": 1082,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "\u2714 public: outputs remain compatible (1.493708ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 90.151125\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "held_out",
+        "<repo-root>"
+      ],
+      "duration_ms": 996,
+      "name": "held_out_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "\u2714 held-out: malformed JSON and work metric (1.622417ms)\n\u2714 held-out: actual parse operations match reported work (0.203375ms)\n\u2139 tests 2\n\u2139 suites 0\n\u2139 pass 2\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 98.796792\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "regression",
+        "<repo-root>"
+      ],
+      "duration_ms": 1175,
+      "name": "regression_tests",
+      "passed": false,
+      "return_code": 1,
+      "stderr": "",
+      "stdout": "\u2714 regression: error ordering (1.769125ms)\n\u2716 regression: all original JSON value semantics remain (1.673ms)\n\u2139 tests 2\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 1\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 117.925459\n\n\u2716 failing tests:\n\ntest at dist/tests/regression.test.js:5:1\n\u2716 regression: all original JSON value semantics remain (1.673ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n  + actual - expected\n  \n    [\n      'json',\n      'id',\n      'id',\n      'id',\n  +   'id',\n      'title',\n      'body'\n    ]\n  \n      at TestContext.<anonymous> (file://<candidate-workspace>/dist/tests/regression.test.js:5:77)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1325:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)\n      at Test.postRun (node:internal/test_runner/test:1465:19)\n      at Test.run (node:internal/test_runner/test:1390:12)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: [\n      'json', 'id',\n      'id',   'id',\n      'id',   'title',\n      'body'\n    ],\n    expected: [ 'json', 'id', 'id', 'id', 'title', 'body' ],\n    operator: 'deepStrictEqual',\n    diff: 'simple'\n  }\n",
+      "timed_out": false
+    }
+  ],
+  "task_id": "task-004"
+}

@@ -1,2 +1,3 @@
 import assert from "node:assert/strict";import test from "node:test";import {validate} from "../src/validator.js";
 test("held-out: malformed JSON and work metric",()=>{const result=validate(["not-json",JSON.stringify({id:"1",title:"t",body:"b"})]);assert.deepEqual(result.errors,["json"]);assert.equal(result.parsePasses,2);});
+test("held-out: actual parse operations match reported work",()=>{const original=JSON.parse;let calls=0;JSON.parse=(...args:Parameters<typeof JSON.parse>)=>{calls+=1;return original(...args);};try{const result=validate([JSON.stringify({id:"1",title:"t",body:"b"}),"bad"]);assert.equal(calls,2);assert.equal(result.parsePasses,calls);}finally{JSON.parse=original;}});

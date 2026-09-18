@@ -1,0 +1,8 @@
+diff --git a/CANDIDATE_NOTES.md b/CANDIDATE_NOTES.md
+new file mode 100644
+--- /dev/null
++++ b/CANDIDATE_NOTES.md
+@@ -0,0 +1,3 @@
++# Baseline control
++
++No implementation change; verifies the intentionally incomplete starting fixture.

@@ -4,6 +4,19 @@ All notable changes follow Keep a Changelog and Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed
+
+- Cache transport acknowledgements across sequential retries and logger failures.
+- Reject invalid/duplicate schedules and report exhausted retries explicitly.
+- Pin the repaired transitive brace-expansion release in the lockfile.
+- Report the actual listening port for ephemeral API starts.
+
+### Added
+
+- Twenty-four evaluator controls with behavioral failure evidence and fixed baseline hashes.
+- Independent validation operation counts, repeatable timing measurements, and HTTP smoke.
+- RFC, decision records, defect report, code review and test strategy tied to these checks.
+
 ### Planned
 
 - Broaden cross-platform verification and contributor-authored task coverage.

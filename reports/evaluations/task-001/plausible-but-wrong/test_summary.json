@@ -5,7 +5,7 @@
         "bash",
         "scripts/format_check.sh"
       ],
-      "duration_ms": 8,
+      "duration_ms": 19,
       "name": "format",
       "passed": true,
       "return_code": 0,
@@ -20,7 +20,7 @@
         "<repo-root>/node_modules/.bin/tsc",
         "<repo-root>"
       ],
-      "duration_ms": 580,
+      "duration_ms": 1359,
       "name": "lint",
       "passed": true,
       "return_code": 0,
@@ -35,7 +35,7 @@
         "<repo-root>/node_modules/.bin/tsc",
         "<repo-root>"
       ],
-      "duration_ms": 717,
+      "duration_ms": 1321,
       "name": "build",
       "passed": true,
       "return_code": 0,
@@ -51,12 +51,12 @@
         "public",
         "<repo-root>"
       ],
-      "duration_ms": 918,
+      "duration_ms": 1637,
       "name": "public_tests",
       "passed": false,
       "return_code": 1,
       "stderr": "",
-      "stdout": "\u2716 public: concurrent same-key calls share one effect (2.094542ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 0\n\u2139 fail 1\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 75.446209\n\n\u2716 failing tests:\n\ntest at dist/tests/public.test.js:4:1\n\u2716 public: concurrent same-key calls share one effect (2.094542ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  3 !== 1\n  \n      at TestContext.<anonymous> (file://<temporary-path>:4:399)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 3,\n    expected: 1,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+      "stdout": "\u2716 public: concurrent same-key calls share one effect (3.746458ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 0\n\u2139 fail 1\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 132.838709\n\n\u2716 failing tests:\n\ntest at dist/tests/public.test.js:4:1\n\u2716 public: concurrent same-key calls share one effect (3.746458ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  3 !== 1\n  \n      at TestContext.<anonymous> (file://<candidate-workspace>/dist/tests/public.test.js:4:399)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 3,\n    expected: 1,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
       "timed_out": false
     }
   ],

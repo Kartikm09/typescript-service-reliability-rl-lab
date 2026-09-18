@@ -1,0 +1,80 @@
+{
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 11,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 828,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "<repo-root>"
+      ],
+      "duration_ms": 850,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "public",
+        "<repo-root>"
+      ],
+      "duration_ms": 1355,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "\u2714 public: schedule emits typed completion (4.796125ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 112.544125\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_test.sh",
+        "<repo-root>/node_modules/.bin/tsc",
+        "held_out",
+        "<repo-root>"
+      ],
+      "duration_ms": 1438,
+      "name": "held_out_tests",
+      "passed": false,
+      "return_code": 1,
+      "stderr": "",
+      "stdout": "\u2714 held-out: cancellation prevents delivery (2.057708ms)\n\u2716 held-out: exhausted retries report failure without unhandled rejection (5.660792ms)\n\u2714 held-out: duplicate pending IDs preserve cancellation ownership (1.257708ms)\n\u2714 held-out: invalid retry bounds are rejected before scheduling (0.294792ms)\n\u2716 held-out: retry can recover and reports the successful attempt (2.643917ms)\n\u2139 tests 5\n\u2139 suites 0\n\u2139 pass 3\n\u2139 fail 2\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 117.519167\n\n\u2716 failing tests:\n\ntest at dist/tests/held_out.test.js:10:1\n\u2716 held-out: exhausted retries report failure without unhandled rejection (5.660792ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  1 !== 2\n  \n      at TestContext.<anonymous> (file://<candidate-workspace>/dist/tests/held_out.test.js:10:448)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 1,\n    expected: 2,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n\ntest at dist/tests/held_out.test.js:18:1\n\u2716 held-out: retry can recover and reports the successful attempt (2.643917ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  \n  1 !== 2\n  \n      at TestContext.<anonymous> (file://<candidate-workspace>/dist/tests/held_out.test.js:19:227)\n      at async Test.run (node:internal/test_runner/test:1332:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 1,\n    expected: 2,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+      "timed_out": false
+    }
+  ],
+  "task_id": "task-002"
+}

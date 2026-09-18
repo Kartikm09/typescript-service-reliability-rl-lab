@@ -1,6 +1,11 @@
 [
   {
-    "after_sha256": "4960d2c89392d65b4b3247f771105f92a074ba906c4b9d1caaeb8f5655bbc4e1",
+    "after_sha256": "6f23b856d0481b0afecb7b4d37aef046889154d18af4b7111d593c88e95b0b38",
+    "before_sha256": null,
+    "path": "CANDIDATE_NOTES.md"
+  },
+  {
+    "after_sha256": "044e15d7f55f49206c17e7bcf9e0cd19592a2393adbed1bc6f5d5d2fcbdd38ac",
     "before_sha256": "3cb172708ebda11df8e39e58a3ce1d403772dfd064a2d22a1c537a5f1168cb0c",
     "path": "src/delivery.ts"
   }
